@@ -11,158 +11,98 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffa500 0%, #ff8c42 50%, #ffa500 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
         }
 
         .container {
-            max-width: 1200px;
             width: 100%;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
             background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 12px 20px;
             text-align: center;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 1.2em;
+            margin: 0;
+            font-weight: 600;
         }
 
         .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin: 0;
         }
 
         .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            min-height: 600px;
-        }
-
-        .embed-section {
-            border-right: 1px solid #eee;
-            overflow: hidden;
-        }
-
-        .embed-section h2 {
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #ff9f43;
-            color: #333;
-            font-size: 1.3em;
-        }
-
-        .embed-frame {
+            flex: 1;
             width: 100%;
-            height: calc(100% - 60px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .canva-frame {
+            width: 100%;
+            height: 100%;
             border: none;
+            display: block;
         }
 
-        .info-section {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: #fafafa;
-        }
-
-        .info-section h2 {
-            color: #ff9f43;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-
-        .info-section h3 {
-            color: #333;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-
-        .info-section p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 15px 0;
-        }
-
-        .feature-list li {
-            padding: 10px 0;
-            color: #555;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .feature-list li:before {
-            content: "✓ ";
-            color: #ff9f43;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .footer {
-            background: #333;
-            color: white;
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
+            color: #666;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff9f43;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-
-            .embed-section {
-                border-right: none;
-                border-bottom: 1px solid #eee;
-            }
-
-            .embed-frame {
-                height: 400px;
+            .header {
+                padding: 10px 15px;
             }
 
             .header h1 {
-                font-size: 1.8em;
+                font-size: 1em;
             }
 
-            .info-section {
-                padding: 30px 20px;
-            }
-
-            .header {
-                padding: 30px 20px;
+            .header p {
+                font-size: 0.75em;
             }
         }
     </style>
@@ -170,49 +110,39 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏛️ IDA North Gujarat</h1>
-            <p>Canva Bridge Portal - Indian Dental Association</p>
+            <h1>🏛️ IDA North Gujarat - Canva Bridge Portal</h1>
+            <p>Indian Dental Association - North Gujarat Branch</p>
         </div>
-
         <div class="content">
-            <!-- Embedded Canva View -->
-            <div class="embed-section">
-                <h2>📱 Live Portal</h2>
-                <iframe class="embed-frame" src="https://saiimpex.my.canva.site/idang" title="IDA North Gujarat Canva Portal"></iframe>
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading Canva Content...</p>
             </div>
-
-            <!-- Info Section -->
-            <div class="info-section">
-                <h2>Portal Details</h2>
-                
-                <div class="status-badge">✓ Active & Live</div>
-
-                <h3>📍 About IDA002</h3>
-                <p>Canva Integration & Content Bridge Solution for IDA North Gujarat Branch</p>
-
-                <h3>🎯 Key Features</h3>
-                <ul class="feature-list">
-                    <li>Embedded Canva Site View</li>
-                    <li>Responsive Mobile Design</li>
-                    <li>Direct Content Access</li>
-                    <li>Custom Domain Support</li>
-                    <li>SSL Security Enabled</li>
-                    <li>Fast Load Times</li>
-                </ul>
-
-                <h3>🔗 Access Methods</h3>
-                <p><strong>Primary URL:</strong> https://idang.mydeesa.in</p>
-                <p><strong>GitHub Pages:</strong> https://jioposters-cloud.github.io/idang</p>
-                <p><strong>Canva Original:</strong> https://saiimpex.my.canva.site/idang</p>
-
-                <h3>✨ Tech Stack</h3>
-                <p>HTML5 • CSS3 • Responsive Design • GitHub Pages Hosting</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>IDA North Gujarat - Canva Bridge Portal | Powered by GitHub Pages | Last Updated: 2024</p>
+            <iframe class="canva-frame" src="https://saiimpex.my.canva.site/idang" title="IDA North Gujarat - Canva Site" allow="fullscreen"></iframe>
         </div>
     </div>
+
+    <script>
+        // This script helps ensure the iframe content is always fresh
+        // Clear cache on every page load to get latest Canva updates
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => {
+                    caches.delete(name);
+                });
+            });
+        }
+
+        // Hide loading spinner when iframe loads
+        document.querySelector('.canva-frame').addEventListener('load', function() {
+            document.querySelector('.loading').style.display = 'none';
+        });
+
+        // Set iframe to refresh every 5 minutes to catch Canva updates
+        setInterval(function() {
+            const iframe = document.querySelector('.canva-frame');
+            iframe.src = iframe.src + '?t=' + Date.now();
+        }, 300000); // 5 minutes = 300000 ms
+    </script>
 </body>
 </html>
