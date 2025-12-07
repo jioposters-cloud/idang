@@ -3,219 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDA North Gujarat - Canva Portal</title>
+    <title>IDA North Gujarat - Indian Dental Association</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
-
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
-            color: white;
-            padding: 12px 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            flex-shrink: 0;
-            z-index: 100;
-        }
-
-        .header h1 {
-            font-size: 1.3em;
+            background: #f5f5f5;
             margin: 0;
-            font-weight: 700;
+            padding: 0;
         }
-
-        .header p {
-            font-size: 0.9em;
-            opacity: 0.95;
-            margin: 2px 0 0 0;
-        }
-
-        .container {
-            flex: 1;
+        
+        .canva-container {
+            width: 100%;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
         }
-
-        .iframe-wrapper {
-            flex: 1;
+        
+        .canva-responsive-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            padding-bottom: 133.33%;
+            height: 0;
             overflow: hidden;
             background: white;
-            border-radius: 8px 8px 0 0;
-            margin: 10px 10px 0 10px;
         }
-
-        iframe {
+        
+        .canva-responsive-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
+            border-radius: 0;
         }
-
-        .fallback-content {
-            flex: 1;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .fallback-content.show {
-            display: flex;
-        }
-
-        .fallback-content h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-
-        .fallback-content p {
-            font-size: 1.1em;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #ff9f43;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        }
-
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #999;
-            display: none;
-        }
-
-        .loading.show {
-            display: block;
-            z-index: 10;
-        }
-
-        .spinner {
-            border: 4px solid #f0f0f0;
-            border-top: 4px solid #ff9f43;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.1em;
+            .canva-responsive-wrapper {
+                padding-bottom: 150%;
             }
-
-            .header p {
-                font-size: 0.8em;
-            }
-
-            .header {
-                padding: 10px 15px;
-            }
-
-            .iframe-wrapper {
-                margin: 5px 5px 0 5px;
+        }
+        
+        @media (max-width: 480px) {
+            .canva-responsive-wrapper {
+                padding-bottom: 180%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏛️ IDA North Gujarat - Canva Portal</h1>
-        <p>Indian Dental Association - North Gujarat Branch</p>
-    </div>
-
-    <div class="container">
-        <div class="loading show" id="loading">
-            <div class="spinner"></div>
-            <p>Loading Canva Content...</p>
-        </div>
-
-        <div class="iframe-wrapper">
-            <iframe id="canvaFrame" src="https://saiimpex.my.canva.site/idang" title="IDA North Gujarat - Canva Portal" allow="fullscreen"></iframe>
-        </div>
-
-        <div class="fallback-content" id="fallback">
-            <h2>📄 Canva Portal</h2>
-            <p>The embedded portal is optimizing for your device. Click below to open the full Canva page directly.</p>
-            <a href="https://saiimpex.my.canva.site/idang" target="_blank" class="cta-button">Open Canva Portal ↗️</a>
-            <p style="margin-top: 25px; font-size: 0.95em; opacity: 0.85;">
-                ✓ All changes you make to the Canva site will automatically reflect here within seconds
-            </p>
+    <div class="canva-container">
+        <div class="canva-responsive-wrapper">
+            <iframe src="https://saiimpex.my.canva.site/idang" 
+                    title="IDA North Gujarat - Canva Portal" 
+                    allow="fullscreen" 
+                    loading="lazy"></iframe>
         </div>
     </div>
-
-    <script>
-        const iframe = document.getElementById('canvaFrame');
-        const loading = document.getElementById('loading');
-        const fallback = document.getElementById('fallback');
-
-        // Hide loading when iframe loads
-        iframe.addEventListener('load', function() {
-            loading.classList.remove('show');
-            console.log('Canva content loaded successfully');
-        });
-
-        // Hide loading after 8 seconds if content doesn't load
-        setTimeout(function() {
-            loading.classList.remove('show');
-        }, 8000);
-
-        // Refresh iframe every 30 seconds to catch updates from Canva
-        setInterval(function() {
-            const timestamp = new Date().getTime();
-            iframe.src = 'https://saiimpex.my.canva.site/idang?t=' + timestamp;
-        }, 30000);
-
-        // Monitor iframe for errors
-        iframe.addEventListener('error', function() {
-            console.log('Iframe error detected');
-        });
-    </script>
 </body>
 </html>
