@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IDA North Gujarat - Indian Dental Association</title>
-    <meta name="description" content="Indian Dental Association North Gujarat Branch - Professional dental services and patient education">
-    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Indian Dental Association North Gujarat Branch">
     <style>
         * {
             margin: 0;
@@ -17,139 +15,126 @@
         html, body {
             width: 100%;
             height: 100%;
-            background: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            color: #333;
-            overflow-x: hidden;
         }
 
         body {
+            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            align-items: flex-start;
+            overflow-x: hidden;
         }
 
         /* Main container */
-        .wrapper {
+        .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 100%;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
-        /* Responsive iframe container using aspect-ratio technique */
-        .iframe-wrapper {
+        /* Responsive iframe wrapper */
+        .iframe-container {
             position: relative;
             width: 100%;
-            padding-bottom: 200%; /* Adjust based on Canva content aspect ratio */
+            padding-bottom: 200%; /* Aspect ratio for Canva */
             height: 0;
             overflow: hidden;
-            background: #fff;
         }
 
-        .iframe-wrapper iframe {
+        .iframe-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
+            display: block;
         }
 
-        /* Loading state */
-        .loader-container {
+        /* Loading indicator */
+        .loading {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 20px;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 5;
-        }
-
-        .loader-container.hidden {
-            display: none;
         }
 
         .spinner {
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top-color: white;
+            border: 4px solid #e0e0e0;
+            border-top-color: #667eea;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin-bottom: 20px;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        .loader-text {
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
+        .loading-text {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 16px;
         }
 
-        /* Fallback/Error state */
-        .fallback-container {
+        .loading.hidden {
+            display: none !important;
+        }
+
+        /* Fallback container */
+        .fallback {
+            display: none;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: none;
-            flex-direction: column;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-direction: column;
             padding: 40px 20px;
             text-align: center;
-            z-index: 10;
+            z-index: 1001;
         }
 
-        .fallback-container.show {
+        .fallback.show {
             display: flex;
         }
 
-        .fallback-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        .fallback-container h2 {
+        .fallback h2 {
             color: white;
             font-size: 28px;
             margin-bottom: 15px;
             font-weight: 600;
         }
 
-        .fallback-container p {
-            color: rgba(255,255,255,0.95);
+        .fallback p {
+            color: rgba(255,255,255,0.9);
             font-size: 16px;
             margin-bottom: 30px;
             max-width: 600px;
             line-height: 1.6;
         }
 
-        .button-group {
+        .fallback .button-group {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .btn {
+        .fallback a, .fallback button {
             display: inline-block;
             padding: 14px 32px;
             border-radius: 6px;
@@ -157,202 +142,127 @@
             font-weight: 600;
             text-decoration: none;
             border: 2px solid white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            min-width: 200px;
-        }
-
-        .btn-primary {
             background: white;
             color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
-        .btn-primary:hover {
+        .fallback a:hover, .fallback button:hover {
             background: rgba(255,255,255,0.9);
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .btn-secondary {
+        .fallback .secondary {
             background: transparent;
             color: white;
         }
 
-        .btn-secondary:hover {
+        .fallback .secondary:hover {
             background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Info banner */
-        .info-banner {
-            background: #e3f2fd;
-            border-left: 4px solid #2196F3;
-            padding: 15px 20px;
-            margin: 20px;
-            border-radius: 4px;
-            display: none;
-            font-size: 14px;
-            color: #1565c0;
-        }
-
-        .info-banner.show {
-            display: block;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .wrapper {
-                border-radius: 4px;
-            }
-
-            .iframe-wrapper {
+            .iframe-container {
                 padding-bottom: 220%;
             }
-
-            .fallback-container h2 {
+            .fallback h2 {
                 font-size: 24px;
             }
-
-            .fallback-container p {
+            .fallback p {
                 font-size: 14px;
-            }
-
-            .btn {
-                padding: 12px 24px;
-                font-size: 15px;
-                min-width: 160px;
             }
         }
 
         @media (max-width: 480px) {
-            .iframe-wrapper {
+            .iframe-container {
                 padding-bottom: 250%;
             }
-
-            .fallback-container h2 {
+            .fallback h2 {
                 font-size: 20px;
             }
-
-            .fallback-container p {
-                font-size: 13px;
-            }
-
-            .button-group {
+            .fallback .button-group {
                 flex-direction: column;
-                gap: 10px;
             }
-
-            .btn {
+            .fallback a, .fallback button {
                 width: 100%;
                 min-width: auto;
-                padding: 12px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="iframe-wrapper" id="iframeWrapper">
-            <!-- Loading State -->
-            <div class="loader-container" id="loaderContainer">
+    <div class="container">
+        <div class="iframe-container" id="iframeContainer">
+            <div class="loading" id="loading">
                 <div class="spinner"></div>
-                <div class="loader-text">Loading Canva Page...</div>
+                <div class="loading-text">Loading Canva Page...</div>
             </div>
-
-            <!-- Iframe -->
+            
             <iframe 
                 id="canvaFrame"
-                src="https://saiimpex.my.canva.site/idang?nocache=1" 
-                title="IDA North Gujarat Canva Page"
-                allow="camera; microphone; geolocation"
+                src="https://saiimpex.my.canva.site/idang?t=1" 
+                title="Canva Page"
                 style="display: none;">
             </iframe>
-
-            <!-- Fallback State (shown when iframe fails) -->
-            <div class="fallback-container" id="fallbackContainer">
-                <div class="fallback-icon">📄</div>
-                <h2>Canva Page Unavailable</h2>
-                <p>We're experiencing trouble loading the Canva page directly due to browser security restrictions. This is a common issue with embedded pages.</p>
+            
+            <div class="fallback" id="fallback">
+                <h2>📄 Unable to Load</h2>
+                <p>The Canva page couldn't be embedded due to browser security restrictions. Please click below to view it on Canva:</p>
                 <div class="button-group">
-                    <a href="https://saiimpex.my.canva.site/idang" class="btn btn-primary" target="_blank">Open on Canva →</a>
-                    <button class="btn btn-secondary" onclick="location.reload()">Try Again</button>
+                    <a href="https://saiimpex.my.canva.site/idang" target="_blank">Open on Canva →</a>
+                    <button class="secondary" onclick="location.reload()">Try Again</button>
                 </div>
             </div>
-        </div>
-        <div class="info-banner" id="infoBanner">
-            ℹ️ This page automatically syncs with the Canva design. Updates may take a few minutes to appear.
         </div>
     </div>
 
     <script>
         (function() {
-            'use strict';
-            
             const iframe = document.getElementById('canvaFrame');
-            const loaderContainer = document.getElementById('loaderContainer');
-            const fallbackContainer = document.getElementById('fallbackContainer');
-            const infoBanner = document.getElementById('infoBanner');
-            const iframeWrapper = document.getElementById('iframeWrapper');
+            const loading = document.getElementById('loading');
+            const fallback = document.getElementById('fallback');
+            const container = document.getElementById('iframeContainer');
             
-            let loadTimeoutId;
-            let iframeLoaded = false;
-            const LOAD_TIMEOUT = 10000; // 10 seconds
-            const AUTO_REFRESH_INTERVAL = 600000; // 10 minutes
+            let loaded = false;
+            const timeout = 10000; // 10 seconds
             
-            // Function to show fallback
-            function showFallback() {
-                if (!iframeLoaded) {
-                    iframe.style.display = 'none';
-                    loaderContainer.classList.add('hidden');
-                    fallbackContainer.classList.add('show');
-                }
-            }
-            
-            // Function to show iframe
-            function showIframe() {
-                iframeLoaded = true;
-                clearTimeout(loadTimeoutId);
+            // Show iframe on successful load
+            iframe.onload = function() {
+                loaded = true;
                 iframe.style.display = 'block';
-                loaderContainer.classList.add('hidden');
-                fallbackContainer.classList.remove('show');
-                infoBanner.classList.add('show');
-            }
+                loading.classList.add('hidden');
+                fallback.classList.remove('show');
+            };
             
-            // Handle iframe load event
-            iframe.onload = showIframe;
-            
-            // Handle iframe error event
-            iframe.onerror = showFallback;
-            
-            // Set timeout to show fallback if iframe takes too long
-            function setLoadTimeout() {
-                loadTimeoutId = setTimeout(showFallback, LOAD_TIMEOUT);
-            }
-            
-            // Attempt to detect CORS error via iframe sandbox
-            iframe.sandbox.add('allow-same-origin');
-            
-            // Initialize
-            setLoadTimeout();
-            iframe.style.display = 'block';
-            
-            // Auto-refresh iframe content every 10 minutes (to sync Canva changes)
-            setInterval(function() {
-                if (iframeLoaded) {
-                    // Add timestamp to bust cache
-                    const timestamp = Date.now();
-                    iframe.src = `https://saiimpex.my.canva.site/idang?nocache=${timestamp}`;
-                    setLoadTimeout();
+            // Show fallback on error
+            iframe.onerror = function() {
+                if (!loaded) {
+                    iframe.style.display = 'none';
+                    loading.classList.add('hidden');
+                    fallback.classList.add('show');
                 }
-            }, AUTO_REFRESH_INTERVAL);
+            };
             
-            // Log to console for debugging
-            console.log('Canva embed initialized. Timeout: ' + LOAD_TIMEOUT + 'ms, Auto-refresh: ' + AUTO_REFRESH_INTERVAL + 'ms');
+            // Timeout fallback
+            setTimeout(function() {
+                if (!loaded) {
+                    iframe.style.display = 'none';
+                    loading.classList.add('hidden');
+                    fallback.classList.add('show');
+                }
+            }, timeout);
+            
+            // Auto-refresh every 10 minutes
+            setInterval(function() {
+                if (loaded) {
+                    const ts = Date.now();
+                    iframe.src = `https://saiimpex.my.canva.site/idang?t=${ts}`;
+                }
+            }, 600000);
         })();
     </script>
 </body>
