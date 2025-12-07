@@ -1,208 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDA North Gujarat - Indian Dental Association</title>
-    <meta name="description" content="Indian Dental Association North Gujarat Branch">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; }
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .wrapper {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            width: 100%;
-            max-width: 900px;
-            overflow: hidden;
-        }
-        .content {
-            padding: 60px 40px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-        .icon {
-            font-size: 80px;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        h1 {
-            color: #2c3e50;
-            font-size: 36px;
-            margin: 0;
-        }
-        .description {
-            color: #666;
-            font-size: 18px;
-            max-width: 600px;
-            line-height: 1.6;
-            margin: 0 auto;
-        }
-        .button-container {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        a, button {
-            display: inline-block;
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-        }
-        .btn-secondary {
-            background: #f0f0f0;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-        .btn-secondary:hover {
-            background: #f9f9f9;
-            transform: translateY(-3px);
-        }
-        .info-box {
-            background: #e8f4f8;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            border-radius: 6px;
-            text-align: left;
-            font-size: 14px;
-            color: #555;
-            max-width: 600px;
-            margin: 20px auto 0;
-        }
-        .info-box strong { color: #2c3e50; }
-        .iframe-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            padding-bottom: 200%;
-            height: 0;
-            overflow: hidden;
-        }
-        .iframe-container.show { display: block; }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
-        }
-        @media (max-width: 768px) {
-            .content { padding: 40px 30px; }
-            h1 { font-size: 28px; }
-            .description { font-size: 16px; }
-            a, button { padding: 14px 30px; font-size: 15px; }
-        }
-        @media (max-width: 480px) {
-            .content { padding: 30px 20px; min-height: auto; }
-            h1 { font-size: 24px; }
-            .description { font-size: 14px; }
-            .button-container { flex-direction: column; gap: 10px; }
-            a, button { width: 100%; padding: 14px 20px; }
-            .icon { font-size: 60px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDA North Gujarat</title>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="iframe-container" id="iframeContainer">
-            <iframe 
-                id="canvaFrame"
-                src="https://saiimpex.my.canva.site/idang" 
-                title="Canva Design">
-            </iframe>
-        </div>
-        
-        <div class="content" id="fallbackContent">
-            <div class="icon">📄</div>
-            <div>
-                <h1>Canva Design</h1>
-                <p class="description">
-                    Due to browser security restrictions (CORS), we're unable to embed this Canva design directly on this page. 
-                    But don't worry - you can still view it by clicking the button below!
-                </p>
-            </div>
-            
-            <div class="button-container">
-                <a href="https://saiimpex.my.canva.site/idang" target="_blank" class="btn-primary">
-                    🔗 Open on Canva →
-                </a>
-                <button onclick="location.reload()" class="btn-secondary">↻ Try Again</button>
-            </div>
-            
-            <div class="info-box">
-                <strong>Technical Note:</strong> Canva's security settings prevent external websites from embedding their designs in iframes. 
-                This is a standard security feature used by most modern web services. You can still access the full design by 
-                opening it on Canva directly.
-            </div>
-        </div>
-    </div>
+  <div class="canva-fullpage">
+    <iframe 
+      src="https://saiimpex.my.canva.site/idang"
+      loading="lazy"
+      allowfullscreen
+      style="border:none;">
+    </iframe>
+  </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframe = document.getElementById('canvaFrame');
-            const container = document.getElementById('iframeContainer');
-            const fallback = document.getElementById('fallbackContent');
-            let loaded = false;
-            
-            // Handle successful load
-            iframe.onload = function() {
-                loaded = true;
-                container.classList.add('show');
-                fallback.style.display = 'none';
-                // Auto-refresh every 10 minutes to sync Canva changes
-                setInterval(() => {
-                    iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
-                }, 600000);
-            };
-            
-            // Handle load error
-            iframe.onerror = function() { showFallback(); };
-            
-            // Timeout fallback (8 seconds)
-            setTimeout(() => {
-                if (!loaded) showFallback();
-            }, 8000);
-            
-            function showFallback() {
-                if (!loaded) {
-                    container.classList.remove('show');
-                    fallback.style.display = 'flex';
-                }
-            }
-        });
-    </script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .canva-fullpage {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .canva-fullpage iframe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </body>
 </html>
