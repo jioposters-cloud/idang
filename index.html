@@ -1,77 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDA North Gujarat - Indian Dental Association</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .canva-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .canva-responsive-wrapper {
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-            padding-bottom: 133.33%;
-            height: 0;
-            overflow: hidden;
-            background: white;
-        }
-        
-        .canva-responsive-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .canva-responsive-wrapper {
-                padding-bottom: 150%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .canva-responsive-wrapper {
-                padding-bottom: 180%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDA North Gujarat - Indian Dental Association</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: #fff;
+    }
+
+    /* Responsive iframe wrapper using aspect ratio technique (like Blogger) */
+    .canva-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: 200%; /* Adjust based on content height */
+      height: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .canva-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+    }
+
+    /* Fallback message when iframe fails */
+    .fallback-content {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px 20px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .fallback-content.show {
+      display: flex;
+    }
+
+    .fallback-content h2 {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .fallback-content p {
+      color: rgba(255,255,255,0.9);
+      font-size: 16px;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .fallback-content a {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .fallback-content a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Loading state */
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .spinner {
+      border: 4px solid rgba(102, 126, 234, 0.1);
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .canva-container {
+        padding-bottom: 220%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .canva-container {
+        padding-bottom: 250%;
+      }
+      
+      .fallback-content h2 {
+        font-size: 20px;
+      }
+      
+      .fallback-content p {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="canva-container">
-        <div class="canva-responsive-wrapper">
-            <iframe src="https://saiimpex.my.canva.site/idang" 
-                    title="IDA North Gujarat - Canva Portal" 
-                    allow="fullscreen" 
-                    loading="lazy"></iframe>
-        </div>
+  <div class="container">
+    <div class="canva-container" id="canvaContainer">
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading Canva Page...</div>
+      </div>
+      <iframe 
+        id="canvaFrame"
+        src="https://saiimpex.my.canva.site/idang?t=" 
+        allow="camera *; microphone *; geolocation *"
+        loading="lazy"
+        style="display: none;">
+      </iframe>
+      <div class="fallback-content" id="fallbackContent">
+        <h2>Unable to Load Canva Page</h2>
+        <p>We're having trouble loading the Canva page directly. This sometimes happens due to browser security settings. Click below to view the page on Canva:</p>
+        <a href="https://saiimpex.my.canva.site/idang" target="_blank">Open on Canva →</a>
+      </div>
     </div>
+  </div>
+
+  <script>
+    (() => {
+      const iframe = document.getElementById('canvaFrame');
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      const fallbackContent = document.getElementById('fallbackContent');
+      const container = document.getElementById('canvaContainer');
+      let iframeLoaded = false;
+
+      // Auto-refresh iframe every 5 minutes to sync Canva changes
+      setInterval(() => {
+        if (iframeLoaded) {
+          const timestamp = new Date().getTime();
+          iframe.src = `https://saiimpex.my.canva.site/idang?t=${timestamp}`;
+        }
+      }, 300000); // 5 minutes
+
+      // Handle iframe load success
+      iframe.onload = () => {
+        iframeLoaded = true;
+        iframe.style.display = 'block';
+        loadingIndicator.style.display = 'none';
+        fallbackContent.classList.remove('show');
+      };
+
+      // Handle iframe load error (CORS or other issues)
+      iframe.onerror = () => {
+        iframeLoaded = false;
+        iframe.style.display = 'none';
+        loadingIndicator.style.display = 'none';
+        fallbackContent.classList.add('show');
+      };
+
+      // Fallback: Show error message after 8 seconds if iframe doesn't load
+      setTimeout(() => {
+        if (!iframeLoaded) {
+          iframe.style.display = 'none';
+          loadingIndicator.style.display = 'none';
+          fallbackContent.classList.add('show');
+        }
+      }, 8000);
+
+      // Show iframe initially
+      iframe.style.display = 'block';
+    })();
+  </script>
 </body>
 </html>
