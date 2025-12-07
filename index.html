@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDA North Gujarat - Indian Dental Association</title>
+    <title>IDA North Gujarat - Canva Portal</title>
     <style>
         * {
             margin: 0;
@@ -11,342 +11,211 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #ff9f43;
-            --secondary: #ee5a6f;
-            --dark: #333;
-            --light: #f8f9fa;
-            --border: #eee;
-        }
-
         html, body {
             width: 100%;
             height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            overflow: hidden;
         }
 
         body {
-            background: var(--light);
-            line-height: 1.6;
-            color: #555;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .header {
+            background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 12px 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+            z-index: 100;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .header h1 {
+            font-size: 1.3em;
+            margin: 0;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
+        .header p {
             font-size: 0.9em;
-            opacity: 0.85;
-            font-weight: 300;
+            opacity: 0.95;
+            margin: 2px 0 0 0;
         }
 
-        /* MAIN CONTAINER */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .iframe-wrapper {
+            flex: 1;
+            overflow: hidden;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            margin: 10px 10px 0 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .fallback-content {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
             padding: 20px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: white;
-            border-radius: 12px;
-            padding: 50px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .hero h2 {
-            font-size: 2em;
-            color: var(--dark);
+        .fallback-content.show {
+            display: flex;
+        }
+
+        .fallback-content h2 {
+            font-size: 1.8em;
             margin-bottom: 15px;
         }
 
-        .hero-subtitle {
+        .fallback-content p {
             font-size: 1.1em;
-            color: #777;
             margin-bottom: 25px;
-            line-height: 1.8;
+            line-height: 1.6;
+            max-width: 600px;
         }
 
-        /* GRID SECTIONS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .card-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: var(--primary);
-            font-size: 1.4em;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.7;
-            font-size: 0.95em;
-        }
-
-        /* FEATURE LIST */
-        .features {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .features h3 {
-            color: var(--primary);
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .feature-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .feature-list li {
-            padding: 12px 15px;
-            background: var(--light);
-            border-left: 4px solid var(--primary);
-            border-radius: 4px;
-        }
-
-        .feature-list li:before {
-            content: "✓ ";
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        /* CTA BUTTON */
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: white;
+            color: #ff9f43;
             padding: 15px 40px;
             border: none;
             border-radius: 50px;
             font-size: 1.1em;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 159, 67, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 159, 67, 0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
 
-        .cta-center {
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            margin: 30px 0;
+            color: #999;
+            display: none;
         }
 
-        /* INFO BOX */
-        .info-box {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 25px 0;
-            color: #856404;
-            text-align: center;
+        .loading.show {
+            display: block;
+            z-index: 10;
         }
 
-        /* FOOTER */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 25px 20px;
-            margin-top: 40px;
-            font-size: 0.9em;
+        .spinner {
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #ff9f43;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
 
-        footer p {
-            margin-bottom: 8px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
+            .header h1 {
+                font-size: 1.1em;
             }
 
-            header p {
-                font-size: 1em;
+            .header p {
+                font-size: 0.8em;
             }
 
-            .hero {
-                padding: 30px 20px;
+            .header {
+                padding: 10px 15px;
             }
 
-            .hero h2 {
-                font-size: 1.5em;
-            }
-
-            .hero-subtitle {
-                font-size: 1em;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            .card h3 {
-                font-size: 1.2em;
-            }
-
-            main {
-                padding: 15px;
-            }
-
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5em;
-            }
-
-            header {
-                padding: 40px 15px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .feature-list {
-                grid-template-columns: 1fr;
+            .iframe-wrapper {
+                margin: 5px 5px 0 5px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🏛️ Indian Dental Association</h1>
-        <p>North Gujarat Branch - IDANG</p>
-        <p class="subtitle">Excellence in Dental Care & Professional Development</p>
-    </header>
+    <div class="header">
+        <h1>🏛️ IDA North Gujarat - Canva Portal</h1>
+        <p>Indian Dental Association - North Gujarat Branch</p>
+    </div>
 
-    <main>
-        <section class="hero">
-            <h2>Welcome to IDA North Gujarat</h2>
-            <p class="hero-subtitle">
-                Serving the dental community with excellence, providing continuing education,
-                professional development, and advocating for patient care standards across North Gujarat region.
-            </p>
-            <div class="cta-center">
-                <a href="#contact" class="cta-button">Get in Touch 📄</a>
-            </div>
-        </section>
-
-        <section class="grid">
-            <div class="card">
-                <div class="card-icon">🫠</div>
-                <h3>Professional Excellence</h3>
-                <p>Committed to maintaining highest standards of dental practice and promoting evidence-based dentistry across our branch.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌟</div>
-                <h3>Continuing Education</h3>
-                <p>Organizing regular workshops, seminars, and training programs to keep members updated with latest advancements in dentistry.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎆</div>
-                <h3>Community Outreach</h3>
-                <p>Actively engaged in dental awareness programs, free check-ups, and patient education initiatives throughout the region.</p>
-            </div>
-        </section>
-
-        <section class="features">
-            <h3>🎉 What We Offer</h3>
-            <ul class="feature-list">
-                <li>Regular Professional Development Programs</li>
-                <li>Networking Opportunities</li>
-                <li>Latest Clinical Practices Training</li>
-                <li>Dental Awareness Campaigns</li>
-                <li>Member Support & Advocacy</li>
-                <li>Ethics & Practice Guidelines</li>
-                <li>Research & Innovation Platform</li>
-                <li>Community Health Initiatives</li>
-            </ul>
-        </section>
-
-        <div class="info-box">
-            ✓ <strong>Fully Responsive Website</strong> - Access from any device: Desktop, Tablet, or Mobile
+    <div class="container">
+        <div class="loading show" id="loading">
+            <div class="spinner"></div>
+            <p>Loading Canva Content...</p>
         </div>
 
-        <section id="contact" class="hero">
-            <h2>Contact IDA North Gujarat</h2>
-            <p class="hero-subtitle">
-                For membership inquiries, event registrations, or general information, please reach out to us.
-            </p>
-            <p style="font-size: 1.1em; margin: 15px 0;">
-                <strong>Email:</strong> idang@ima.org.in<br>
-                <strong>Region:</strong> North Gujarat, India<br>
-                <strong>Association:</strong> Indian Medical Association (IMA)
-            </p>
-        </section>
-    </main>
+        <div class="iframe-wrapper">
+            <iframe id="canvaFrame" src="https://saiimpex.my.canva.site/idang" title="IDA North Gujarat - Canva Portal" allow="fullscreen"></iframe>
+        </div>
 
-    <footer>
-        <p>🏛️ IDA North Gujarat - Professional Dental Association</p>
-        <p>Promoting Excellence in Dental Practice | © 2024-2025</p>
-        <p>Part of the Indian Medical Association Network</p>
-    </footer>
+        <div class="fallback-content" id="fallback">
+            <h2>📄 Canva Portal</h2>
+            <p>The embedded portal is optimizing for your device. Click below to open the full Canva page directly.</p>
+            <a href="https://saiimpex.my.canva.site/idang" target="_blank" class="cta-button">Open Canva Portal ↗️</a>
+            <p style="margin-top: 25px; font-size: 0.95em; opacity: 0.85;">
+                ✓ All changes you make to the Canva site will automatically reflect here within seconds
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('canvaFrame');
+        const loading = document.getElementById('loading');
+        const fallback = document.getElementById('fallback');
+
+        // Hide loading when iframe loads
+        iframe.addEventListener('load', function() {
+            loading.classList.remove('show');
+            console.log('Canva content loaded successfully');
+        });
+
+        // Hide loading after 8 seconds if content doesn't load
+        setTimeout(function() {
+            loading.classList.remove('show');
+        }, 8000);
+
+        // Refresh iframe every 30 seconds to catch updates from Canva
+        setInterval(function() {
+            const timestamp = new Date().getTime();
+            iframe.src = 'https://saiimpex.my.canva.site/idang?t=' + timestamp;
+        }, 30000);
+
+        // Monitor iframe for errors
+        iframe.addEventListener('error', function() {
+            console.log('Iframe error detected');
+        });
+    </script>
 </body>
 </html>
