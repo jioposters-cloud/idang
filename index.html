@@ -1,329 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IDA North Gujarat - Canva Portal</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-      min-height: 100vh;
-      padding: 20px;
-    }
-    
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    header {
-      background: white;
-      border-radius: 15px;
-      padding: 30px 20px;
-      text-align: center;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    
-    .logo {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #2a5298;
-      margin-bottom: 10px;
-    }
-    
-    .tagline {
-      color: #666;
-      font-size: 1.1em;
-    }
-    
-    .view-options {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    
-    .view-btn {
-      padding: 12px 30px;
-      background: white;
-      border: 2px solid #2a5298;
-      color: #2a5298;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .view-btn.active {
-      background: #2a5298;
-      color: white;
-    }
-    
-    .view-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    
-    .content-box {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      display: none;
-      min-height: 600px;
-      animation: fadeIn 0.4s ease;
-    }
-    
-    .content-box.active {
-      display: block;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    #embed-container {
-      width: 100%;
-      height: 800px;
-      border: none;
-    }
-    
-    #direct-container {
-      width: 100%;
-      height: auto;
-      overflow: hidden;
-    }
-    
-    .loading {
-      text-align: center;
-      color: #666;
-      padding: 40px;
-      font-size: 1.1em;
-    }
-    
-    .error-message {
-      background: #fee;
-      border: 1px solid #f99;
-      color: #c33;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    
-    .success-message {
-      background: #efe;
-      border: 1px solid #9f9;
-      color: #3c3;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    
-    footer {
-      text-align: center;
-      color: white;
-      margin-top: 40px;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-    
-    @media (max-width: 768px) {
-      .logo {
-        font-size: 1.8em;
-      }
-      
-      .view-options {
-        flex-direction: column;
-      }
-      
-      .view-btn {
-        width: 100%;
-      }
-      
-      #embed-container,
-      #direct-container {
-        height: 600px;
-      }
-      
-      .content-box {
-        padding: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDA North Gujarat - Canva Bridge Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffa500 0%, #ff8c42 50%, #ffa500 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff9f43 0%, #ee5a6f 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .embed-section {
+            border-right: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .embed-section h2 {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #ff9f43;
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        .embed-frame {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
+        }
+
+        .info-section {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fafafa;
+        }
+
+        .info-section h2 {
+            color: #ff9f43;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .info-section h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .info-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            color: #555;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .feature-list li:before {
+            content: "✓ ";
+            color: #ff9f43;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .embed-section {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .embed-frame {
+                height: 400px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .info-section {
+                padding: 30px 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">🦷 IDA NORTH GUJARAT</div>
-      <div class="tagline">Canva Portal & Content Integration</div>
-    </header>
-    
-    <div class="view-options">
-      <button class="view-btn active" onclick="switchView('embed')">🔗 Embedded View</button>
-      <button class="view-btn" onclick="switchView('direct')">📄 Direct Content</button>
-      <button class="view-btn" onclick="switchView('info')">ℹ️ About This Portal</button>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ IDA North Gujarat</h1>
+            <p>Canva Bridge Portal - Indian Dental Association</p>
+        </div>
+
+        <div class="content">
+            <!-- Embedded Canva View -->
+            <div class="embed-section">
+                <h2>📱 Live Portal</h2>
+                <iframe class="embed-frame" src="https://saiimpex.my.canva.site/idang" title="IDA North Gujarat Canva Portal"></iframe>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2>Portal Details</h2>
+                
+                <div class="status-badge">✓ Active & Live</div>
+
+                <h3>📍 About IDA002</h3>
+                <p>Canva Integration & Content Bridge Solution for IDA North Gujarat Branch</p>
+
+                <h3>🎯 Key Features</h3>
+                <ul class="feature-list">
+                    <li>Embedded Canva Site View</li>
+                    <li>Responsive Mobile Design</li>
+                    <li>Direct Content Access</li>
+                    <li>Custom Domain Support</li>
+                    <li>SSL Security Enabled</li>
+                    <li>Fast Load Times</li>
+                </ul>
+
+                <h3>🔗 Access Methods</h3>
+                <p><strong>Primary URL:</strong> https://idang.mydeesa.in</p>
+                <p><strong>GitHub Pages:</strong> https://jioposters-cloud.github.io/idang</p>
+                <p><strong>Canva Original:</strong> https://saiimpex.my.canva.site/idang</p>
+
+                <h3>✨ Tech Stack</h3>
+                <p>HTML5 • CSS3 • Responsive Design • GitHub Pages Hosting</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>IDA North Gujarat - Canva Bridge Portal | Powered by GitHub Pages | Last Updated: 2024</p>
+        </div>
     </div>
-    
-    <!-- Embedded View -->
-    <div id="embed" class="content-box active">
-      <h2 style="color: #2a5298; margin-bottom: 20px;">Canva Site - Embedded View</h2>
-      <div class="loading">Loading Canva site...</div>
-      <iframe 
-        id="embed-container" 
-        src="https://saiimpex.my.canva.site/idang"
-        title="IDA North Gujarat Canva Site"
-        allow="geolocation; microphone; camera; payment"
-        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation allow-downloads"
-      ></iframe>
-    </div>
-    
-    <!-- Direct Content View -->
-    <div id="direct" class="content-box">
-      <h2 style="color: #2a5298; margin-bottom: 20px;">📄 Direct Content Bridge</h2>
-      <div id="direct-container" class="loading">Loading Canva content...</div>
-    </div>
-    
-    <!-- Info View -->
-    <div id="info" class="content-box">
-      <h2 style="color: #2a5298; margin-bottom: 20px;">ℹ️ About This Portal</h2>
-      <div style="line-height: 1.8; color: #333;">
-        <h3 style="color: #2a5298; margin: 20px 0 10px 0;">🔗 Canva Integration Methods</h3>
-        <p style="margin-bottom: 15px;">
-          <strong>Method 1 - Embedded View:</strong> Direct iframe embedding of the Canva site. Works best when accessed directly without domain masking.
-        </p>
-        <p style="margin-bottom: 15px;">
-          <strong>Method 2 - Direct Content Bridge:</strong> Fetches and displays Canva content directly in our GitHub Pages site, avoiding masking issues entirely.
-        </p>
-        
-        <h3 style="color: #2a5298; margin: 20px 0 10px 0;">✅ Why This Approach?</h3>
-        <ul style="margin-left: 20px; margin-bottom: 15px;">
-          <li>❌ <strong>Domain Masking Problem:</strong> GoDaddy masking breaks SSL and responsiveness</li>
-          <li>✅ <strong>DNS CNAME Solution:</strong> Direct domain pointing (idang.mydeesa.in → GitHub Pages)</li>
-          <li>✅ <strong>No Redirect Issues:</strong> Canva content loads without redirect conflicts</li>
-          <li>✅ <strong>Mobile Responsive:</strong> Full responsive design on all devices</li>
-          <li>✅ <strong>HTTPS Secure:</strong> Free SSL certificate from Let's Encrypt (auto-issued)</li>
-        </ul>
-        
-        <h3 style="color: #2a5298; margin: 20px 0 10px 0;">🌐 Current Configuration</h3>
-        <p style="margin-bottom: 15px; font-family: monospace; background: #f5f5f5; padding: 15px; border-left: 4px solid #2a5298;">
-          <strong>Domain:</strong> idang.mydeesa.in<br>
-          <strong>Hosted On:</strong> GitHub Pages (jioposters-cloud.github.io/idang)<br>
-          <strong>DNS Setup:</strong> CNAME pointing to jioposters-cloud.github.io<br>
-          <strong>Canva Site:</strong> https://saiimpex.my.canva.site/idang
-        </p>
-        
-        <h3 style="color: #2a5298; margin: 20px 0 10px 0;">📌 Important Notes</h3>
-        <ul style="margin-left: 20px;">
-          <li>Both methods require internet connection to load Canva content</li>
-          <li>Embedded view works best when idang.mydeesa.in uses direct DNS (no masking)</li>
-          <li>If you see "Refused to frame" error, your Canva site may need iframe permission</li>
-          <li>For best results, ensure your Canva site allows embedding</li>
-        </ul>
-      </div>
-    </div>
-    
-    <footer>
-      <p>© 2025 IDA North Gujarat | Canva Integration Portal | Secure & Responsive</p>
-      <p style="margin-top: 10px; opacity: 0.8;">Powered by GitHub Pages + Canva Bridge Solution</p>
-    </footer>
-  </div>
-  
-  <script>
-    function switchView(viewId) {
-      // Hide all content boxes
-      document.querySelectorAll('.content-box').forEach(box => {
-        box.classList.remove('active');
-      });
-      
-      // Remove active class from all buttons
-      document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
-      // Show selected view
-      document.getElementById(viewId).classList.add('active');
-      
-      // Add active class to clicked button
-      event.target.classList.add('active');
-      
-      // Load direct content if direct view is selected
-      if (viewId === 'direct') {
-        loadDirectContent();
-      }
-    }
-    
-    function loadDirectContent() {
-      const container = document.getElementById('direct-container');
-      container.innerHTML = '<div class="loading">Loading Canva content via bridge...</div>';
-      
-      // Fetch Canva site and extract content
-      const canvaUrl = 'https://saiimpex.my.canva.site/idang';
-      
-      fetch(canvaUrl, {
-        mode: 'no-cors',
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-      })
-      .then(response => {
-        // Note: CORS may restrict this, but we attempt it
-        if (response.ok) {
-          return response.text();
-        } else {
-          throw new Error('Unable to fetch content directly');
-        }
-      })
-      .then(html => {
-        // Extract body content and display
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const content = doc.body.innerHTML;
-        
-        container.innerHTML = `
-          <div class="success-message">
-            ✅ Content loaded successfully from Canva
-          </div>
-          <div style="max-height: 800px; overflow-y: auto;">
-            ${content}
-          </div>
-        `;
-      })
-      .catch(error => {
-        // If direct fetch fails, show helpful message
-        container.innerHTML = `
-          <div class="error-message">
-            <strong>⚠️ Direct Content Loading Unavailable</strong>
-            <p style="margin-top: 10px;">
-              The Canva site content cannot be fetched directly due to CORS restrictions or site settings.
-            </p>
-            <p style="margin-top: 10px;">
-              <strong>Solution:</strong> Please use the "Embedded View" tab above, or visit the Canva site directly at:
-            </p>
-            <p style="margin-top: 10px; font-family: monospace; background: #fff; padding: 10px; border-radius: 5px;">
-              https://saiimpex.my.canva.site/idang
-            </p>
-          </div>
-        `;
-        console.error('Error loading direct content:', error);
-      });
-    }
-    
-    // Initialize
-    window.addEventListener('load', () => {
-      console.log('IDA North Gujarat Canva Portal loaded successfully');
-      console.log('Available views: Embedded, Direct Content, Info');
-    });
-  </script>
 </body>
 </html>
