@@ -141,9 +141,35 @@
         .bank-row:last-child { border-bottom: none; }
         .bank-label { font-weight: 600; color: #333; }
         .bank-value { color: #666; font-family: monospace; font-size: 16px; }
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-scroll table {
+            min-width: 600px;
+        }
         @media (max-width: 600px) {
-            .tab-btn { min-width: 100%; }
+            body { padding: 10px; }
+            .container { border-radius: 10px; }
+            .header { padding: 20px 15px; }
+            .header h1 { font-size: 22px; }
+            .header p { font-size: 14px; }
+            .tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+            }
+            .tab-btn {
+                min-width: 100px;
+                padding: 12px 8px;
+                font-size: 12px;
+                white-space: nowrap;
+            }
+            .tab-content { padding: 20px 15px; }
+            .info-box { padding: 15px; }
+            .btn { padding: 14px 20px; font-size: 14px; }
             .bank-row { flex-direction: column; gap: 5px; }
+            .bank-value { font-size: 14px; word-break: break-all; }
         }
     </style>
 </head>
@@ -168,7 +194,9 @@
                 <a href="javascript:void(0)" onclick="showTab('cde'); loadCde();" class="btn btn-outline">View Registered Members</a>
             </div>
             <div id="cdeLoader" class="loader" style="display:none;">Loading...</div>
+            <div class="table-scroll">
             <div id="cdeTable"></div>
+            </div>
         </div>
         
         <div id="family" class="tab-content">
@@ -197,7 +225,9 @@
             </div>
             <div id="respLoader" class="loader" style="display:none;">Loading responses...</div>
             <div id="respError" class="loader" style="display:none;color:red;">Error loading data</div>
+            <div class="table-scroll">
             <div id="respTable"></div>
+            </div>
         </div>
         
         <div id="bank" class="tab-content">
