@@ -198,7 +198,7 @@
 
     <div id="cde" class="section active">
       <h2>CDE Registration &amp; Registered Members</h2>
-      <a href="https://forms.gle/ewtQwdrjRMeNB8yQ6" target="_blank" class="btn-link">Open CDE Registration Form</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-TLDSazUxVWhriNVpUahvLqSrFaRX2G1BJUireuBkSZz-rg/viewform?usp=dialog" target="_blank" class="btn-link">Open CDE Registration Form</a>
       <p style="margin: 18px 0 10px; color: #64748b; font-size: 0.9rem;">Search and filter registered CDE members below.</p>
       <div class="filters">
         <input type="text" id="cdeSearchName" placeholder="Search by Doctor Name..." onkeyup="filterCde()">
@@ -281,7 +281,7 @@
   </div>
 
   <script>
-    const CDE_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQM7oiD0SCIuZzQkOa0MSGKpTZDGGQbuTfUKdK1kO1UxxpDQGvEDU4SCyoeoKz_jC0FMVoOnoTXcNir/pub?gid=1595893853&single=true&output=csv';
+    const CDE_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQazkxgu7I5RdwbWW9m1pUzvOiHVWjEypsSqsB4Vt14-dDVcbqMt-rN34iI7zIYd1slDU3ImihcxaaR/pub?gid=1585082830&single=true&output=csv';
     const FAM_CSV = 'https://docs.google.com/spreadsheets/d/1x5u64fz3gVgPt_Huw1fAYn0rZHTySG4TBXTu9uZWCvs/export?format=csv&gid=0';
 
     let cdeData = [];
@@ -336,7 +336,9 @@
           if (!cols || !cols[1]) continue;
           const name = (cols[1] || '').trim();
           const city = (cols[2] || '').trim();
-          if (name && name !== 'Doctor Name') cdeData.push({ name, city });
+          if (name && name !== 'IDA NG Member Name' && name !== 'IDA NG App') {
+            cdeData.push({ name, city });
+          }
         }
         loader.style.display = 'none';
         if (cdeData.length === 0) { empty.style.display = 'block'; return; }
