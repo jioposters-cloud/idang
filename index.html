@@ -10,14 +10,11 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 20px;
     }
     .container {
-      max-width: 600px;
-      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
       background: white;
       border-radius: 16px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.2);
@@ -26,60 +23,163 @@
     .header {
       background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
       color: white;
-      padding: 40px 30px;
+      padding: 30px;
       text-align: center;
     }
     .header h1 {
-      font-size: 2rem;
-      margin-bottom: 8px;
+      font-size: 1.8rem;
       font-weight: 700;
     }
     .header p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       opacity: 0.9;
+      margin-top: 6px;
     }
-    .content {
-      padding: 30px;
-    }
-    .section {
-      margin-bottom: 25px;
-    }
-    .section h2 {
-      font-size: 1.1rem;
-      color: #1e3c72;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #e2e8f0;
-    }
-    .section a {
-      display: block;
-      padding: 14px 20px;
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
       background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      text-decoration: none;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav button {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px 18px;
+      background: white;
+      border: 2px solid #2a5298;
       color: #2a5298;
+      border-radius: 8px;
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      cursor: pointer;
       transition: all 0.2s;
     }
-    .section a:hover {
+    .nav button:hover, .nav button.active {
       background: #2a5298;
       color: white;
     }
-    .section a:last-child {
-      margin-bottom: 0;
+    .section {
+      display: none;
+      padding: 30px;
+    }
+    .section.active { display: block; }
+    .section h2 {
+      font-size: 1.4rem;
+      color: #1e3c72;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .info-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .info-box strong {
+      color: #1e3c72;
+    }
+    .btn-link {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #2a5298;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 6px 0;
+      transition: background 0.2s;
+    }
+    .btn-link:hover { background: #1e3c72; }
+    .btn-copy {
+      background: white;
+      border: 1px solid #2a5298;
+      color: #2a5298;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-copy:hover { background: #2a5298; color: white; }
+    .filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .filters input, .filters select {
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    .filters input:focus, .filters select:focus {
+      outline: none;
+      border-color: #2a5298;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      background: #1e3c72;
+      color: white;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.92rem;
+    }
+    tr:hover { background: #f8fafc; }
+    .loader {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+    .error {
+      background: #fee;
+      color: #991b1b;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border-left: 4px solid #dc2626;
+      margin-bottom: 12px;
+    }
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
     }
     .footer {
       text-align: center;
       color: #94a3b8;
-      padding: 20px;
+      padding: 16px;
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
     }
-    @media (max-width: 480px) {
-      .header h1 { font-size: 1.6rem; }
-      .content { padding: 20px; }
+    @media (max-width: 600px) {
+      .filters { grid-template-columns: 1fr; }
+      .nav button { min-width: 100%; }
+      .section { padding: 18px; }
+      .header h1 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -89,44 +189,241 @@
       <h1>IDA North Gujarat</h1>
       <p>Indian Dental Association - North Gujarat Branch</p>
     </div>
-    <div class="content">
-      <div class="section">
-        <h2>CDE Registration & View</h2>
-        <a href="https://docs.google.com/forms/d/1IYZSrd5S7fagqnW4fcx9ATAqkC5Rb8V5phEfXCsPvLM/edit" target="_blank">
-          Family Tour Registration Form
-        </a>
-        <a href="https://docs.google.com/forms/d/1IYZSrd5S7fagqnW4fcx9ATAqkC5Rb8V5phEfXCsPvLM/edit#responses" target="_blank">
-          View Responses
-        </a>
+    <div class="nav">
+      <button class="active" data-target="cde">CDE Registration &amp; Members</button>
+      <button data-target="family">Family Meet - View List</button>
+      <button data-target="bank">Bank Details</button>
+      <button data-target="social">Social Media</button>
+    </div>
+
+    <div id="cde" class="section active">
+      <h2>CDE Registration &amp; Registered Members</h2>
+      <a href="https://forms.gle/ewtQwdrjRMeNB8yQ6" target="_blank" class="btn-link">Open CDE Registration Form</a>
+      <p style="margin: 18px 0 10px; color: #64748b; font-size: 0.9rem;">Search and filter registered CDE members below.</p>
+      <div class="filters">
+        <input type="text" id="cdeSearchName" placeholder="Search by Doctor Name..." onkeyup="filterCde()">
+        <select id="cdeSearchCity" onchange="filterCde()">
+          <option value="">All Cities</option>
+        </select>
       </div>
-      <div class="section">
-        <h2>Bank Details</h2>
-        <a href="#" onclick="copyToClipboard('73190100000020'); return false;">
-          Account Number: 7319 0100 0000 20
-        </a>
-        <a href="#" onclick="copyToClipboard('BARB0DBDESA'); return false;">
-          IFSC Code: BARB0DBDESA
-        </a>
-      </div>
-      <div class="section">
-        <h2>Social Media Connection</h2>
-        <a href="https://www.facebook.com/share/1A47rtP4pm/" target="_blank">
-          Facebook Page
-        </a>
+      <div id="cdeLoader" class="loader">Loading registered members...</div>
+      <div id="cdeError" class="error" style="display:none;">Failed to load members. Please try again.</div>
+      <div id="cdeEmpty" class="empty" style="display:none;">No members found.</div>
+      <div class="table-wrap" id="cdeTableWrap" style="display:none;">
+        <table>
+          <thead><tr><th>#</th><th>Doctor Name</th><th>City</th></tr></thead>
+          <tbody id="cdeBody"></tbody>
+        </table>
       </div>
     </div>
+
+    <div id="family" class="section">
+      <h2>IDA NG Family Meet - Udaipur</h2>
+      <p style="margin-bottom: 12px;">View registered attendees for the Family Meet.</p>
+      <a href="https://docs.google.com/forms/d/1IYZSrd5S7fagqnW4fcx9ATAqkC5Rb8V5phEfXCsPvLM/edit" target="_blank" class="btn-link">Open Family Meet Registration Form</a>
+      <p style="margin: 18px 0 10px; color: #64748b; font-size: 0.9rem;">Search and filter attendees below.</p>
+      <div class="filters">
+        <input type="text" id="famSearchName" placeholder="Search by Doctor Name..." onkeyup="filterFamily()">
+        <select id="famSearchCity" onchange="filterFamily()">
+          <option value="">All Cities</option>
+        </select>
+      </div>
+      <div id="famLoader" class="loader">Loading attendees...</div>
+      <div id="famError" class="error" style="display:none;">Failed to load responses. Please try again.</div>
+      <div id="famEmpty" class="empty" style="display:none;">No registrations found yet.</div>
+      <div class="table-wrap" id="famTableWrap" style="display:none;">
+        <table>
+          <thead><tr><th>#</th><th>Doctor Name</th><th>City</th><th>Mobile</th><th>Category</th><th>Family</th><th>Extra Bed</th></tr></thead>
+          <tbody id="famBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="bank" class="section">
+      <h2>Bank Details</h2>
+      <div class="info-box">
+        <div>
+          <strong>Account Holder Name</strong><br>
+          <span>Indian Dental Association NORTH GUJARAT BRANCH</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <div>
+          <strong>Account Number</strong><br>
+          <span>7319 0100 0000 20</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('73190100000020')">Copy</button>
+      </div>
+      <div class="info-box">
+        <div>
+          <strong>Bank &amp; Branch</strong><br>
+          <span>BANK OF BARODA, DEESA</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <div>
+          <strong>IFSC Code</strong><br>
+          <span>BARB0DBDESA</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('BARB0DBDESA')">Copy</button>
+      </div>
+      <p style="color: #991b1b; font-size: 0.85rem; margin-top: 10px;">Note: Fifth character in IFSC code is ZERO (0), not letter O.</p>
+    </div>
+
+    <div id="social" class="section">
+      <h2>Social Media Connection</h2>
+      <a href="https://www.facebook.com/share/1A47rtP4pm/" target="_blank" class="btn-link">Visit our Facebook Page</a>
+    </div>
+
     <div class="footer">
       &copy; 2025 IDA North Gujarat. All rights reserved.
     </div>
   </div>
+
   <script>
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Copied: ' + text);
-      }).catch(err => {
-        console.error('Copy failed', err);
+    const CDE_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQM7oiD0SCIuZzQkOa0MSGKpTZDGGQbuTfUKdK1kO1UxxpDQGvEDU4SCyoeoKz_jC0FMVoOnoTXcNir/pub?gid=1595893853&single=true&output=csv';
+    const FAM_CSV = 'https://docs.google.com/spreadsheets/d/1x5u64fz3gVgPt_Huw1fAYn0rZHTySG4TBXTu9uZWCvs/export?format=csv&gid=0';
+
+    let cdeData = [];
+    let famData = [];
+
+    function parseCSV(text) {
+      const lines = text.split(/\r?\n/);
+      const result = [];
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (!line.trim()) continue;
+        const row = [];
+        let cur = '';
+        let inQ = false;
+        for (let j = 0; j < line.length; j++) {
+          const c = line[j];
+          if (c === '"' && line[j + 1] === '"') { cur += '"'; j++; }
+          else if (c === '"') { inQ = !inQ; }
+          else if (c === ',' && !inQ) { row.push(cur); cur = ''; }
+          else { cur += c; }
+        }
+        row.push(cur);
+        result.push(row);
+      }
+      return result;
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.querySelector('.nav button[data-target="' + id + '"]').classList.add('active');
+    }
+
+    document.querySelectorAll('.nav button').forEach(btn => {
+      btn.addEventListener('click', () => showSection(btn.dataset.target));
+    });
+
+    async function loadCde() {
+      const loader = document.getElementById('cdeLoader');
+      const err = document.getElementById('cdeError');
+      const empty = document.getElementById('cdeEmpty');
+      const wrap = document.getElementById('cdeTableWrap');
+      try {
+        const r = await fetch(CDE_CSV + '&t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const text = await r.text();
+        const rows = parseCSV(text);
+        cdeData = [];
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i];
+          if (!cols || !cols[1]) continue;
+          const name = (cols[1] || '').trim();
+          const city = (cols[2] || '').trim();
+          if (name && name !== 'Doctor Name') cdeData.push({ name, city });
+        }
+        loader.style.display = 'none';
+        if (cdeData.length === 0) { empty.style.display = 'block'; return; }
+        const cities = Array.from(new Set(cdeData.map(d => d.city).filter(Boolean))).sort();
+        const sel = document.getElementById('cdeSearchCity');
+        cities.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+        renderCde(cdeData);
+        wrap.style.display = 'block';
+      } catch (e) {
+        loader.style.display = 'none';
+        err.style.display = 'block';
+      }
+    }
+
+    function renderCde(data) {
+      const tbody = document.getElementById('cdeBody');
+      tbody.innerHTML = '';
+      data.forEach((m, i) => {
+        tbody.innerHTML += '<tr><td>' + (i + 1) + '</td><td>' + esc(m.name) + '</td><td>' + esc(m.city) + '</td></tr>';
       });
     }
+
+    function filterCde() {
+      const n = document.getElementById('cdeSearchName').value.toLowerCase();
+      const c = document.getElementById('cdeSearchCity').value;
+      const f = cdeData.filter(m => m.name.toLowerCase().includes(n) && (!c || m.city === c));
+      renderCde(f);
+      document.getElementById('cdeEmpty').style.display = f.length === 0 ? 'block' : 'none';
+    }
+
+    async function loadFamily() {
+      const loader = document.getElementById('famLoader');
+      const err = document.getElementById('famError');
+      const empty = document.getElementById('famEmpty');
+      const wrap = document.getElementById('famTableWrap');
+      try {
+        const r = await fetch(FAM_CSV + '&t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const text = await r.text();
+        const rows = parseCSV(text);
+        famData = [];
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i];
+          if (!cols || !cols[2]) continue;
+          const name = (cols[2] || '').trim();
+          if (name) famData.push({
+            name,
+            city: (cols[3] || cols[6] || '').trim(),
+            mobile: (cols[7] || '').trim(),
+            category: (cols[8] || '').trim(),
+            family: (cols[9] || '').trim(),
+            extra: (cols[10] || '').trim()
+          });
+        }
+        loader.style.display = 'none';
+        if (famData.length === 0) { empty.style.display = 'block'; return; }
+        const cities = Array.from(new Set(famData.map(d => d.city).filter(Boolean))).sort();
+        const sel = document.getElementById('famSearchCity');
+        cities.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+        renderFamily(famData);
+        wrap.style.display = 'block';
+      } catch (e) {
+        loader.style.display = 'none';
+        err.style.display = 'block';
+      }
+    }
+
+    function renderFamily(data) {
+      const tbody = document.getElementById('famBody');
+      tbody.innerHTML = '';
+      data.forEach((m, i) => {
+        tbody.innerHTML += '<tr><td>' + (i + 1) + '</td><td>' + esc(m.name) + '</td><td>' + esc(m.city) + '</td><td>' + esc(m.mobile) + '</td><td>' + esc(m.category) + '</td><td>' + esc(m.family) + '</td><td>' + esc(m.extra) + '</td></tr>';
+      });
+    }
+
+    function filterFamily() {
+      const n = document.getElementById('famSearchName').value.toLowerCase();
+      const c = document.getElementById('famSearchCity').value;
+      const f = famData.filter(m => m.name.toLowerCase().includes(n) && (!c || m.city === c));
+      renderFamily(f);
+      document.getElementById('famEmpty').style.display = f.length === 0 ? 'block' : 'none';
+    }
+
+    function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    function copyText(t) { navigator.clipboard.writeText(t).then(() => alert('Copied: ' + t)).catch(() => {}); }
+
+    window.addEventListener('load', () => { loadCde(); loadFamily(); });
   </script>
 </body>
 </html>
