@@ -191,6 +191,7 @@
         </div>
         
         <div id="responses" class="tab-content">
+            <h3 style="color:#1e3c72;margin-bottom:15px;">Family Tour - Udaipur Registration Responses</h3>
             <div class="btn-group">
                 <a href="javascript:void(0)" onclick="loadFamily();" class="btn btn-outline">Load Family Tour Responses</a>
             </div>
@@ -230,7 +231,7 @@
     
     <script>
         const CDE_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQazkxgu7I5RdwbWW9m1pUzvOiHVWjEypsSqsB4Vt14-dDVcbqMt-rN34iI7zIYd1slDU3ImihcxaaR/pub?gid=1585082830&single=true&output=csv';
-        const FAM_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQazkxgu7I5RdwbWW9m1pUzvOiHVWjEypsSqsB4Vt14-dDVcbqMt-rN34iI7zIYd1slDU3ImihcxaaR/pub?gid=0&single=true&output=csv';
+        const FAM_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQM7oiD0SCIuZzQkOa0MSGKpTZDGGQbuTfUKdK1kO1UxxpDQGvEDU4SCyoeoKz_jC0FMVoOnoTXcNir/pub?output=csv';
         
         let cdeData = [];
         
@@ -314,10 +315,36 @@
                     table.innerHTML = '<p style="text-align:center;color:#666;">No responses yet</p>';
                     return;
                 }
-                table.innerHTML = `<table><thead><tr><th>#</th><th>Name</th><th>City</th></tr></thead><tbody>` +
+                table.innerHTML = `<table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Doctor Name</th>
+                            <th>City</th>
+                            <th>Mobile</th>
+                            <th>Category</th>
+                            <th>Family Count</th>
+                            <th>Extra Bed</th>
+                        </tr>
+                    </thead>
+                    <tbody>` +
                     lines.slice(1).map((l, i) => {
                         const cols = l.split(',');
-                        return `<tr><td>${i+1}</td><td>${esc(cols[2])}</td><td>${esc(cols[3])}</td></tr>`;
+                        const name = cols[1]?.trim() || '';
+                        const city = cols[7]?.trim() || '';
+                        const mobile = cols[2]?.trim() || '';
+                        const category = cols[3]?.trim() || '';
+                        const family = cols[4]?.trim() || '';
+                        const extra = cols[5]?.trim() || '';
+                        return `<tr>
+                            <td>${i+1}</td>
+                            <td>${esc(name)}</td>
+                            <td>${esc(city)}</td>
+                            <td>${esc(mobile)}</td>
+                            <td>${esc(category)}</td>
+                            <td>${esc(family)}</td>
+                            <td>${esc(extra)}</td>
+                        </tr>`;
                     }).join('') +
                     `</tbody></table>`;
             } catch (e) {
